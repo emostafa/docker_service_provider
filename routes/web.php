@@ -18,8 +18,7 @@ Route::get('/', function () {
 Route::get('/containers', ['uses' => 'DockerController@index']);
 
 Route::get('/test', function(){
-    $messageFactory = new Http\Message\MessageFactory\DiactorosMessageFactory();
-    dd($messageFactory);
-    $docker = new App\Helpers\DockerApi($messageFactory);
-    $docker->listContainers();
+    $messageFactory = new Http\Message\MessageFactory\DiactorosMessageFactory;
+    $docker = new Docker\DockerApi($messageFactory);
+    dd($docker->listContainers());
 });
